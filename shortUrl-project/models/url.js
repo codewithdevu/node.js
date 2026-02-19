@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 
-const urlSchema = new mongoose.schema({
+const urlSchema = new mongoose.Schema({
     shortUrlId: {
         type: String,
         required: true,
         unique: true,
     },
-    redirectUrlId: {
+    redirectUrl: {
         type: String,
         required: true,
     },
