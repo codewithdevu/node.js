@@ -5,6 +5,6 @@ const router= express.Router();
 
 router.post("/" , handleGenerateShortUrl);
 
-router.get("/analytics/:shortId" , handleGetAnalytics )
+router.get("/analytics/:shortid" , handleGetAnalytics )
 
 module.exports = router;
