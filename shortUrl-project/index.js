@@ -2,6 +2,7 @@ const express = require("express");
 const { connectToMongoDb } = require("./connection");
 const URL = require("./models/url");
 const path = require("path");
+const cookieParser = require("cookie-parser")
 
 const urlRoute = require("./routes/url");
 const staticRoute = require("./routes/staticRouter");
@@ -22,6 +23,7 @@ connectToMongoDb("mongodb://Localhost:27017/short-url")
 //middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}))
+app.use(cookieParser());
 
 // ejs setup
 app.set("view engine", "ejs");
