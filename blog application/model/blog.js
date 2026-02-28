@@ -9,7 +9,7 @@ const blogSchema = new Schema({
         type: String,
         required:  true,
     },
-    coverImageURl: {
+    coverImageURL: {
         type: String,
         required: false,
     },
@@ -19,9 +19,9 @@ const blogSchema = new Schema({
     }
 } , {timestamps: true});
 
-const blog = model("blog" , blogSchema);
+const Blog = model("Blog" , blogSchema);
 
 export {
-    blog
+    Blog
 }
 

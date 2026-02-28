@@ -1,6 +1,7 @@
 import {Router} from "express";
 import multer from "multer";
 import path from "path"
+import {Blog} from "../model/blog.js"
 
 const router = Router();
 
@@ -22,11 +23,16 @@ router.get("/add-new" , (req , res) => {
     })
 })
 
-router.post("/" , upload.single("CoverImageURL") , (req , res) => {
-    console.log(req.body);
-    console.log(req.file);
-    return res.redirect("/")
-    
-})
+router.post("/" , upload.single("coverImageURL") , async (req , res) => {
+  const {title , body} = req.body;
+  const blog = await Blog.create({
+    title,
+    body,
+    createdBy: req.user._id,
+    coverImageURL: `/uploads/${req.file.filename}`,
+  });
+
+    return res.redirect(`/blog/${blog._id}`);
+});
 
 export default router ;
