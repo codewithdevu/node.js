@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from "express";
 import path from "path";
 import userRoute from "./routes/user.js";
@@ -8,9 +9,9 @@ import { Blog } from "./model/blog.js";
 import { checkAuthenticationCookie } from "./middleware/authentication.js";
 
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT;
 
-mongoose.connect("mongodb://localhost:27017/blogify").then((e) => console.log("mongodb connected"));
+mongoose.connect(process.env.MONGO_URL).then((e) => console.log("mongodb connected"));
 
 
 app.set("view engine" , "ejs");

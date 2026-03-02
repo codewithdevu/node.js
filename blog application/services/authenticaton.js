@@ -1,6 +1,6 @@
     import JWT from "jsonwebtoken";
 
-    const secret = "coder@123";
+    const secret = process.env.SECRET;
 
     function createTokenForUser(user) {
         const payload = {
