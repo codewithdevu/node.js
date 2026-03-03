@@ -30,7 +30,7 @@ const userSchema = new Schema({
     },
 }, { timestamps: true })
 
-userSchema.pre("save", function (next) {
+userSchema.pre("save", async function () {
     const user = this;
 
     if (!user.isModified("password")) return;
@@ -41,7 +41,6 @@ userSchema.pre("save", function (next) {
     this.salt = salt;
     this.password = hashedPassword;
 
-    next();
 })
 
 userSchema.static("matchPasswordAndGenerateToken", async function (email, password) {
