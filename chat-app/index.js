@@ -1,7 +1,7 @@
 import express from "express";
 import http from "http";
 import path from "path";
-const { Server } = require("socket.io");
+import { Server } from "socket.io";
 
 const app = express();
 const server = http.createServer(app);
@@ -10,7 +10,9 @@ const io = new Server(server);
 
 //socket io
 io.on("connection" , (socket) => {
-    console.log("a new user is connectod socket id:" , socket.id);
+    socket.on("user-message" , (message) => {
+        io.emit("message" , message);
+    })
 })
 
 
