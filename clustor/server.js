@@ -1,4 +1,4 @@
-import cluster from "cluster";
+import cluster from "node:cluster";
 import os from "os";
 import express from "express";
 
@@ -19,6 +19,7 @@ if (cluster.isPrimary) {
     })
 
     app.listen(PORT, () => {
-        console.log(`http://localhost:${PORT}`);
+        console.log(`server started at port: ${PORT}`);
     })
+
 }
